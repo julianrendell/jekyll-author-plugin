@@ -41,7 +41,7 @@ module Jekyll
       self.data['author']    = author
       # Set the title for this page.
       title_prefix             = site.config['author_title_prefix'] || 'author: '
-      self.data['title']       = "#{author}"
+      self.data['title']       = "#{title_prefix}#{author}"
       # Set the meta-description for this page.
       meta_description_prefix  = site.config['author_meta_description_prefix'] || 'author: '
       self.data['description'] = "#{meta_description_prefix}#{author}"      
@@ -114,6 +114,7 @@ module Jekyll
     #
     def author_links(authors)
       dir = @context.registers[:site].config['author_dir'] || "authors"
+      
       if String.try_convert(authors)
                authors = [ authors ]
       end
